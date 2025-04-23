@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <!-- 问题页面容器 -->
+    <div id="questions-container" class="w-full max-w-md mx-auto p-6 rounded-xl shadow-lg transition-all duration-500 transform">
+        <!-- 问题1 -->
+        <div id="question-1" class="question-slide">
+            <h2 class="text-2xl font-bold text-center mb-8">你爱晗晗女儿吗？</h2>
+            <div class="flex flex-col space-y-4">
+                <button class="answer-btn bg-pink-100 hover:bg-pink-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="true">爱</button>
+                <button class="answer-btn bg-pink-100 hover:bg-pink-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="false">这是什么问题？</button>
+            </div>
+        </div>
+        
+        <!-- 问题2 -->
+        <div id="question-2" class="question-slide hidden">
+            <h2 class="text-2xl font-bold text-center mb-8">你觉得部长帅吗？</h2>
+            <div class="flex flex-col space-y-4">
+                <button class="answer-btn bg-blue-100 hover:bg-blue-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="true">帅！</button>
+                <button class="answer-btn bg-blue-100 hover:bg-blue-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="true">没有我帅！</button>
+            </div>
+        </div>
+        
+        <!-- 问题3 -->
+        <div id="question-3" class="question-slide hidden">
+            <h2 class="text-2xl font-bold text-center mb-8">怎么夸你的乖老婆呢？</h2>
+            <div class="flex flex-col space-y-4">
+                <button class="answer-btn bg-purple-100 hover:bg-purple-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="false">一点缺点难道都有吗？？？</button>
+                <button class="answer-btn bg-purple-100 hover:bg-purple-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="true">完全没有任何一点缺点！！！</button>
+            </div>
+        </div>
+        
+        <!-- 问题4 -->
+        <div id="question-4" class="question-slide hidden">
+            <h2 class="text-2xl font-bold text-center mb-8">如何形容佩佩？</h2>
+            <div class="flex flex-col space-y-4">
+                <button class="answer-btn bg-green-100 hover:bg-green-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="false">脚杆有点短！</button>
+                <button class="answer-btn bg-green-100 hover:bg-green-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="true">也是我的乖乖女儿啦</button>
+            </div>
+        </div>
+        
+        <!-- 问题5 -->
+        <div id="question-5" class="question-slide hidden">
+            <h2 class="text-2xl font-bold text-center mb-8">有我们你幸福吗？</h2>
+            <div class="flex flex-col space-y-4">
+                <button class="answer-btn bg-yellow-100 hover:bg-yellow-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="false">辛福</button>
+                <button class="answer-btn bg-yellow-100 hover:bg-yellow-200 text-gray-800 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105" data-correct="true">幸福</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 过渡页面 -->
+    <div id="transition-screen" class="fixed inset-0 bg-black flex items-center justify-center hidden">
+        <p id="transition-text" class="text-white text-3xl font-bold opacity-0 transition-opacity duration-1000">不会以为到这就结束了吧？</p>
+    </div>
+    
+    <!-- 照片展示容器 -->
+    <div id="photo-gallery" class="fixed inset-0 hidden">
+        <!-- 单张照片展示区域 -->
+        <div id="single-photo-container" class="w-full h-full flex items-center justify-center bg-black">
+            <!-- 照片将动态插入 -->
+        </div>
+        
+        <!-- 生日快乐大字和彩带效果 -->
+        <div id="birthday-splash" class="fixed inset-0 bg-black flex items-center justify-center hidden">
+            <div class="text-center relative">
+                <div class="birthday-text text-7xl font-bold mb-10">
+                    <span class="text-pink-500">生</span>
+                    <span class="text-blue-500">日</span>
+                    <span class="text-green-500">快</span>
+                    <span class="text-yellow-500">乐</span>
+                </div>
+                
+                <!-- 彩带效果 -->
+                <div class="confetti-container"></div>
+            </div>
+        </div>
+        
+        <!-- 照片墙 -->
+        <div id="photo-wall" class="hidden w-full h-full bg-black overflow-hidden">
+            <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 photo-grid p-4 h-3/4 overflow-auto">
+                <!-- 照片将动态插入 -->
+            </div>
+            
+            <!-- 生日祝福区域 -->
+            <div class="flex flex-col items-center justify-center h-1/4 bg-gradient-to-b from-black to-pink-900 relative">
+                <!-- 生日快乐文字 -->
+                <div id="birthday-wish" class="text-white text-5xl font-bold text-center mb-4 hidden">
+                    <div class="animate-pulse">
+                        <span class="text-pink-500">生</span>
+                        <span class="text-blue-500">日</span>
+                        <span class="text-green-500">快</span>
+                        <span class="text-yellow-500">乐</span>
+                    </div>
+                </div>
+                
+                <!-- 生日祝福语录 -->
+                <div id="birthday-message" class="text-white text-xl text-center px-4 max-w-3xl hidden">
+                    <p class="leading-relaxed">祝亲爱的商大帅哥生日快乐！！！嘿嘿没有想到吧今年你也有生日小作文哟～才不会让你吃醋😤😤😤从上一次给汤大美女写生日小作文已经过去大半年了 我们也成为真正的研究生👩‍🎓🧑‍🎓了也都一直在往好的方向一直努力和前进着 当然绝对也少不了你们的支持和帮助 我们走过了广州深圳香港澳门汕头北京阿那亚西藏 你们也陪伴我们走过了最美好的花样年华 在此回望过去 期待我们的澳洲之旅 同时也期待有你们的未来 期待陪伴我们走过每一个人生阶段的你们 因为属于我们一家人的每一天 都值得期待让我们继续幸福下去吧！生日快乐啦！我们永远都爱你！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 音频标签 -->
+    <audio id="first-song" src="music/wenwen.ogg"></audio>
+    <audio id="birthday-song" src="music/shengrikuaile.ogg"></audio>
+    
+    <script src="script.js"></script>
+</body>
+</html> 

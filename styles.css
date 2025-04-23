@@ -1,0 +1,249 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* 问题容器样式 */
+.question-slide {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 按钮特效 */
+.answer-btn {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.answer-btn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.answer-btn:active:after {
+    width: 300px;
+    height: 300px;
+}
+
+/* 照片展示样式 */
+.single-photo {
+    max-width: 80%;
+    max-height: 80vh;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 1s ease-out;
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+#single-photo-container {
+    background: radial-gradient(circle, #1f1f1f 0%, #000000 100%);
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInPhoto 0.5s ease forwards;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid transparent;
+}
+
+.photo-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    z-index: 10;
+    border-color: rgba(255, 105, 180, 0.7);
+}
+
+/* 动画定义 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInPhoto {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 为照片墙中的图片设置不同的动画延迟 */
+.photo-grid img:nth-child(1) { animation-delay: 0.1s; }
+.photo-grid img:nth-child(2) { animation-delay: 0.15s; }
+.photo-grid img:nth-child(3) { animation-delay: 0.2s; }
+.photo-grid img:nth-child(4) { animation-delay: 0.25s; }
+.photo-grid img:nth-child(5) { animation-delay: 0.3s; }
+.photo-grid img:nth-child(6) { animation-delay: 0.35s; }
+.photo-grid img:nth-child(7) { animation-delay: 0.4s; }
+.photo-grid img:nth-child(8) { animation-delay: 0.45s; }
+.photo-grid img:nth-child(9) { animation-delay: 0.5s; }
+.photo-grid img:nth-child(10) { animation-delay: 0.55s; }
+.photo-grid img:nth-child(11) { animation-delay: 0.6s; }
+.photo-grid img:nth-child(12) { animation-delay: 0.65s; }
+.photo-grid img:nth-child(13) { animation-delay: 0.7s; }
+.photo-grid img:nth-child(14) { animation-delay: 0.75s; }
+.photo-grid img:nth-child(15) { animation-delay: 0.8s; }
+.photo-grid img:nth-child(16) { animation-delay: 0.85s; }
+.photo-grid img:nth-child(17) { animation-delay: 0.9s; }
+.photo-grid img:nth-child(18) { animation-delay: 0.95s; }
+.photo-grid img:nth-child(19) { animation-delay: 1s; }
+.photo-grid img:nth-child(20) { animation-delay: 1.05s; }
+
+/* 生日祝福文字特效 */
+@keyframes colorChange {
+    0% { color: #ff6b6b; }
+    25% { color: #48dbfb; }
+    50% { color: #1dd1a1; }
+    75% { color: #feca57; }
+    100% { color: #ff6b6b; }
+}
+
+#birthday-wish span {
+    display: inline-block;
+    animation: bounce 1s infinite alternate;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+#birthday-wish span:nth-child(1) { animation-delay: 0s; }
+#birthday-wish span:nth-child(2) { animation-delay: 0.1s; }
+#birthday-wish span:nth-child(3) { animation-delay: 0.2s; }
+#birthday-wish span:nth-child(4) { animation-delay: 0.3s; }
+
+/* 生日祝福语录样式 */
+#birthday-message p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.8;
+}
+
+/* 照片墙背景 */
+#photo-wall {
+    background: linear-gradient(to bottom, #000000, #1f1f1f);
+}
+
+/* 转场文字效果 */
+#transition-text {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+}
+
+/* 添加闪烁星星效果到照片墙 */
+.photo-grid {
+    position: relative;
+}
+
+.photo-grid::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, white 1px, transparent 1px),
+        radial-gradient(circle at 50% 80%, white 1px, transparent 1px),
+        radial-gradient(circle at 80% 10%, white 1px, transparent 1px),
+        radial-gradient(circle at 10% 60%, white 1px, transparent 1px),
+        radial-gradient(circle at 90% 70%, white 1px, transparent 1px),
+        radial-gradient(circle at 30% 20%, white 1px, transparent 1px),
+        radial-gradient(circle at 70% 40%, white 1px, transparent 1px);
+    background-size: 400px 400px;
+    opacity: 0.3;
+    z-index: -1;
+    animation: twinkle 4s infinite linear;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.5; }
+}
+
+/* 生日快乐闪屏样式 */
+#birthday-splash {
+    z-index: 10;
+}
+
+.birthday-text {
+    animation: popIn 0.8s ease-out forwards;
+}
+
+.birthday-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: popInLetter 0.6s ease-out forwards;
+    text-shadow: 0 0 15px currentColor;
+}
+
+.birthday-text span:nth-child(1) { animation-delay: 0.1s; }
+.birthday-text span:nth-child(2) { animation-delay: 0.3s; }
+.birthday-text span:nth-child(3) { animation-delay: 0.5s; }
+.birthday-text span:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes popInLetter {
+    0% { transform: scale(0.5); opacity: 0; }
+    80% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 彩带效果 */
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: #f00;
+    opacity: 0.8;
+    animation: confetti-fall 5s linear forwards, confetti-shake 3s ease-in-out infinite;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(600px); }
+}
+
+@keyframes confetti-shake {
+    0% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-15px) rotate(45deg); }
+    50% { transform: translateX(0) rotate(90deg); }
+    75% { transform: translateX(15px) rotate(45deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+} 
